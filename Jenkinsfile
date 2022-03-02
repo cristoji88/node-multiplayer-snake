@@ -1,12 +1,8 @@
-node ('Ubuntu-app-agent'){  
+node ('master'){  
    // def app
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
-    }  
-    stage('SAST'){
-        sh 'echo SAST'
-        /*build 'SECURITY-SAST-SNYK'*/
     }
 
     
@@ -22,22 +18,10 @@ node ('Ubuntu-app-agent'){
             app.push("latest")
         			}*/
          }
-    stage('SECURITY-IMAGE-SCANNER'){
-       sh 'echo ContainerSec'
-        /* build 'SECURITY-IMAGE-SCANNER-AQUAMICROSCANNER'*/
-    }
-  
-    
     stage('Pull-image-server') {
     sh 'echo Pull-imager-server'
         /* sh "docker-compose down"
-         sh "docker-compose up -d"*/	
-      }
-    
-    stage('DAST')
-    sh 'echo DAST'   
-    /* {
-        build 'SECURITY-DAST-OWASP_ZAP'
+         sh "docker-compose up -d" */
         }
  
 }
