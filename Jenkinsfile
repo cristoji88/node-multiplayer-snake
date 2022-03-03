@@ -1,27 +1,25 @@
-node ('master'){  
-   // def app
+node ('Ubuntu-app-agent'){  
+    def app
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
     }
-
     
     stage('Build-and-Tag') {
-    sh 'echo Built and Tag'
-        /* This builds the actual image; synonymous to
+    /* This builds the actual image; synonymous to
          * docker build on the command line */
-      //  app = docker.build("amrit96/snake")
+        app = docker.build("amrit96/snake")
     }
     stage('Post-to-dockerhub') {
-    sh 'echo PostDockerhub'
-    /* docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
+    
+     docker.withRegistry('https://registry.hub.docker.com', 'DockerHub Creds') {
             app.push("latest")
-        			}*/
+        			                }
          }
     stage('Pull-image-server') {
-    sh 'echo Pull-imager-server'
-        /* sh "docker-compose down"
-         sh "docker-compose up -d" */
+    
+         sh "docker-compose down"
+         sh "docker-compose up -d"
         }
  
 }
