@@ -8,17 +8,4 @@ node ('Ubuntu-app-agent'){
     /* This builds the actual image; synonymous to
          * docker build on the command line */
         app = docker.build("506sec/snake")
-    }
-    stage('Post-to-dockerhub') {
     
-     docker.withRegistry('https://registry.hub.docker.com', 'DockerHub Creds') {
-            app.push("latest")
-        			                }
-         }
-    stage('Pull-image-server') {
-    
-         sh "docker-compose down"
-         sh "docker-compose up -d"
-        }
- 
-}
