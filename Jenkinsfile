@@ -11,7 +11,7 @@ node ('Ubuntu-app-agent'){
     }
     stage('Post-to-dockerhub') {
     
-     docker.withRegistry('https://registry.hub.docker.com', 'DockerHub Creds') {
+     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_creds') {
             app.push("latest")
         			           }
          }
