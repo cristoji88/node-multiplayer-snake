@@ -7,7 +7,7 @@ node ('Ubuntu-app-agent'){
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("amrit96/snake")
+        app = docker.build("506sec/snake")
     }
     stage('Post-to-dockerhub') {
     
