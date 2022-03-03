@@ -8,4 +8,8 @@ node ('Ubuntu-app-agent'){
     /* This builds the actual image; synonymous to
          * docker build on the command line */
         app = docker.build("amrit96/snake")
+    }
     
+        }
+ 
+}
